@@ -1,0 +1,1 @@
+curl -k  -X POST http://127.0.0.1:8080/auth/realms/master/protocol/openid-connect/token  -d grant_type=password  -d client_id=test -d username=keycloak -d password=keycloak | jq
