@@ -14,7 +14,7 @@ class App extends Component {
           <ul>
             <li><Link to="/">Public Component</Link></li>
             <li><Link to="/secured">Secured Component</Link></li>
-            <li><a href="http://localhost:8080/auth/realms/MyDemo/account/">Keycloak User Profile</a></li>
+            <li><a href="http://localhost:8080/auth/realms/demo/account/">Keycloak User Profile</a></li>
           </ul>
           <Route exact path="/" component={Welcome} />
           <Route path="/secured" component={Secured} />
