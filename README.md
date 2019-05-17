@@ -7,7 +7,7 @@ There is really two types of use cases when using OIDC. The first is an applicat
 The second type of use cases is that of a client that wants to gain access to remote services. In this case, the client asks Keycloak to obtain an access token it can use to invoke on other remote services on behalf of the user. Keycloak authenticates the user then asks the user for consent to grant access to the client requesting it. The client then receives the access token. This access token is digitally signed by the realm. The client can make REST invocations on remote services using this access token. The REST service extracts the access token, verifies the signature of the token, then decides based on access information within the token whether or not to process the request.
 https://www.keycloak.org/docs/3.2/securing_apps/topics/overview/supported-protocols.html
 
-
+## For the Node_js app I used this setup.
 ### setup cluster keycloak cluster to use OIDC
 * spin up minikube
   `minikube start`
@@ -68,3 +68,15 @@ NOTE: to do this I just exported a variable and set the access token to it
 * make a secured request:
   ` curl -X GET http://localhost:3000/service/secured -H "Authorization: Bearer "$access_token `
 Note: You should see {"message":"I am an authenticated response."}
+
+
+## For the React app
+I pretty much followed this tutorial: 
+https://scalac.io/user-authentication-keycloak-1
+
+There were some minor changed to the promise callbacks.
+* Spin up docker:
+`docker run -p 8081:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin -e DB_VENDOR=H2 jboss/keycloak`
+* Create a new realm `demo`
+* Create a new user `wes` & setup credentials
+* download json and insert into the react app following tutorial above
